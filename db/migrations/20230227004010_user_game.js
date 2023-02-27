@@ -3,13 +3,13 @@
  * @returns { Promise<void> }
  */
 exports.up = function (knex) {
-  return knex.schema.createTable("user_game", function (table) {
+  return knex.schema.createTable("member_game", function (table) {
     table.increments("id").primary();
     table
-      .integer("user_id")
+      .integer("member_id")
       .notNullable()
       .references("id")
-      .inTable("user")
+      .inTable("member")
       .onDelete("cascade");
     table
       .integer("game_id")
@@ -28,5 +28,5 @@ exports.up = function (knex) {
  * @returns { Promise<void> }
  */
 exports.down = function (knex) {
-  knex.schema.dropTable("user_game");
+  knex.schema.dropTable("member_game");
 };
