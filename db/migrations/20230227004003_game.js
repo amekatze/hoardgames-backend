@@ -4,10 +4,10 @@
  */
 exports.up = function (knex) {
   return knex.schema.createTable("game", function (table) {
-    table.increments("id").primary();
+    table.string("id").primary();
     table.string("name", 32).notNullable();
     table.string("description", 255);
-    table.string("image_url", 64);
+    table.string("image_url", 255);
     table.integer("min_players");
     table.integer("max_players");
     table.integer("min_playtime");

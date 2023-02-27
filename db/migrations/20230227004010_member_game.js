@@ -12,7 +12,7 @@ exports.up = function (knex) {
       .inTable("member")
       .onDelete("cascade");
     table
-      .integer("game_id")
+      .string("game_id")
       .notNullable()
       .references("id")
       .inTable("game")
