@@ -66,4 +66,9 @@ module.exports = {
       });
     }
   },
+
+  async deleteGame(id) {
+    console.log(id);
+    return knex(MEMBER_GAME_TABLE).where("game_id", id).del();
+  },
 };
