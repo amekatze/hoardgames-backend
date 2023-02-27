@@ -12,7 +12,6 @@ module.exports = {
   },
 
   async deleteGame(req, res) {
-    console.log(req.body);
     await boardgameModel.deleteGame(req.body.id);
     res.status(201).send("Deleted");
   },
