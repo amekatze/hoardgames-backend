@@ -1,9 +1,9 @@
-const config = require("../../knexfile");
-const knex = require("knex")(config);
+const config = require('../../knexfile');
+const knex = require('knex')(config);
 
-const MEMBER_TABLE = "member";
-const GAME_TABLE = "game";
-const MEMBER_GAME_TABLE = "member_game";
+const MEMBER_TABLE = 'member';
+const GAME_TABLE = 'game';
+const MEMBER_GAME_TABLE = 'member_game';
 
 module.exports = {
   MEMBER_TABLE,
@@ -24,8 +24,8 @@ module.exports = {
       });
       return { success: true };
     } catch (error) {
-      if (error.code === "23505") {
-        return { success: false, message: "Username already exists" };
+      if (error.code === '23505') {
+        return { success: false, message: 'Username already exists' };
       }
       throw error;
     }
@@ -35,21 +35,26 @@ module.exports = {
   async loginUser(userData) {
     const user = await knex(MEMBER_TABLE)
       .select({
-        username: "username",
-        password: "password",
+        id: 'id',
+        username: 'username',
+        password: 'password',
       })
-      .where("username", userData.username)
+      .where('username', userData.username)
       .first();
 
     if (!user) {
-      return { message: "User not found" };
+      return { message: 'User not found' };
     }
-    console.log(userData.password, user);
 
     if (user.password !== userData.password) {
-      return { message: "Incorrect password" };
+      return {
+        message: 'Incorrect password',
+      };
     }
 
-    return { message: "Login successful" };
+    return {
+      id: user.id,
+      message: 'Login successful',
+    };
   },
 };

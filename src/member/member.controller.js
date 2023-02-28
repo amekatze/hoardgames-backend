@@ -1,4 +1,4 @@
-const memberModel = require("./member.model");
+const memberModel = require('./member.model');
 
 module.exports = {
   async createUser(req, res) {
@@ -8,6 +8,6 @@ module.exports = {
 
   async loginUser(req, res) {
     const user = await memberModel.loginUser(req.body);
-    res.status(500).send(user);
+    res.status(201).send(user);
   },
 };

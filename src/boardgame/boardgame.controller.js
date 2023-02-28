@@ -1,4 +1,4 @@
-const boardgameModel = require("./boardgame.model");
+const boardgameModel = require('./boardgame.model');
 
 module.exports = {
   async getGameList(req, res) {
@@ -8,11 +8,11 @@ module.exports = {
 
   async addGame(req, res) {
     await boardgameModel.addGame(req.body);
-    res.status(201).send("Game added.");
+    res.status(201).send('Game added.');
   },
 
   async deleteGame(req, res) {
     await boardgameModel.deleteGame(req.body.id);
-    res.status(201).send("Deleted");
+    res.status(201).send('Deleted');
   },
 };
