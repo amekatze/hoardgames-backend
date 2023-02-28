@@ -12,7 +12,17 @@ module.exports = {
   },
 
   async deleteGame(req, res) {
-    await boardgameModel.deleteGame(req.body.id);
+    await boardgameModel.deleteGame(req.body.gameId, req.body.memberId);
     res.status(201).send('Deleted');
+  },
+
+  async updateRating(req, res) {
+    console.log(req.body);
+    await boardgameModel.updateRating(
+      req.body.gameId,
+      req.body.memberId,
+      req.body.rating
+    );
+    res.status(201).send('');
   },
 };

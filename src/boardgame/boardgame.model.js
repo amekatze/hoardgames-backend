@@ -25,6 +25,7 @@ module.exports = {
         game: 'game.name',
         game_id: 'game.id',
         game_image: 'game.image_url',
+        rating: 'rating',
       })
       .where('member.id', id);
   },
@@ -74,8 +75,17 @@ module.exports = {
     }
   },
 
-  async deleteGame(id) {
-    console.log(id);
-    return knex(MEMBER_GAME_TABLE).where('game_id', id).del();
+  async deleteGame(gameId, memberId) {
+    return knex(MEMBER_GAME_TABLE)
+      .where('game_id', gameId)
+      .where('member_id', memberId)
+      .del();
+  },
+
+  async updateRating(gameId, memberId, rating) {
+    return knex(MEMBER_GAME_TABLE)
+      .where('game_id', gameId)
+      .where('member_id', memberId)
+      .update({ rating });
   },
 };
