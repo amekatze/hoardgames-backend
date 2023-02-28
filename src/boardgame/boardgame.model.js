@@ -32,6 +32,7 @@ module.exports = {
         rules_url: 'game.rules_url',
         rating: 'rating',
         year_published: 'game.year_published',
+        note: 'note',
       })
       .where('member.id', id);
   },
