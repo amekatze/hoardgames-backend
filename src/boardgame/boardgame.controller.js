@@ -17,11 +17,19 @@ module.exports = {
   },
 
   async updateRating(req, res) {
-    console.log(req.body);
     await boardgameModel.updateRating(
       req.body.gameId,
       req.body.memberId,
       req.body.rating
+    );
+    res.status(201).send('');
+  },
+
+  async updateNote(req, res) {
+    await boardgameModel.updateNote(
+      req.body.gameId,
+      req.body.memberId,
+      req.body.note
     );
     res.status(201).send('');
   },

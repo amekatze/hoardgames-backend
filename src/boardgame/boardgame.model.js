@@ -25,7 +25,13 @@ module.exports = {
         game: 'game.name',
         game_id: 'game.id',
         game_image: 'game.image_url',
+        min_player: 'game.min_player',
+        max_player: 'game.max_player',
+        min_playtime: 'game.min_playtime',
+        max_playtime: 'game.max_playtime',
+        rules_url: 'game.rules_url',
         rating: 'rating',
+        year_published: 'game.year_published',
       })
       .where('member.id', id);
   },
@@ -59,11 +65,12 @@ module.exports = {
           name: gameData.name,
           description: gameData.description,
           image_url: gameData.image_url,
-          min_players: gameData.min_players,
-          max_players: gameData.max_players,
+          min_player: gameData.min_player,
+          max_player: gameData.max_player,
           min_playtime: gameData.min_playtime,
           max_playtime: gameData.max_playtime,
           year_published: gameData.year_published,
+          rules_url: gameData.rules_url,
         });
       }
 
@@ -87,5 +94,12 @@ module.exports = {
       .where('game_id', gameId)
       .where('member_id', memberId)
       .update({ rating });
+  },
+
+  async updateNote(gameId, memberId, note) {
+    return knex(MEMBER_GAME_TABLE)
+      .where('game_id', gameId)
+      .where('member_id', memberId)
+      .update({ note });
   },
 };

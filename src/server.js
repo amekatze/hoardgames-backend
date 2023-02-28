@@ -13,6 +13,7 @@ const serverEndpoints = () => {
   server.post('/user/game', boardgameController.addGame);
   server.delete('/user/game', boardgameController.deleteGame);
   server.patch('/user/game', boardgameController.updateRating);
+  server.patch('/user/game/note', boardgameController.updateNote);
 
   server.post('/user/login', memberController.loginUser);
   server.post('/user/signUp', memberController.createUser);

@@ -6,7 +6,7 @@ exports.up = function (knex) {
   return knex.schema.createTable('member_game', function (table) {
     table.increments('id').primary();
     table
-      .primary('member_id')
+      .integer('member_id')
       .notNullable()
       .references('id')
       .inTable('member')
@@ -19,7 +19,7 @@ exports.up = function (knex) {
       .onDelete('cascade');
     table.string('status', 32);
     table.integer('rating', 5);
-    table.string('review', 255);
+    table.string('note', 255);
   });
 };
 
